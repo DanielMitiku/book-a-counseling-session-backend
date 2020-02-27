@@ -3,7 +3,7 @@ class AppointmentsController < ApplicationController
   before_action :set_user_appointment, only: [:show, :update, :destroy]
 
   def index
-    json_response(@user.appointments)
+    json_response(current_user.appointments)
   end
 
   def show
@@ -11,7 +11,7 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-    @user.appointments.create!(appointment_params)
+    current_user.appointments.create!(appointment_params)
     json_response(@appointment, :created)
   end
 

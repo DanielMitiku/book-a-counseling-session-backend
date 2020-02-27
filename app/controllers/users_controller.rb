@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
+  skip_before_action :authorize_request, only: :create
+
   # before_action :logged_in_user, only: [:show, :update, :destroy]
   # before_action :correct_user,   only: [:update]
   # before_action :admin_user,     only: [:destroy, :index]
@@ -11,7 +13,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create!(user_params)
-    json_response(@user, :created)
+    auth_token = AuthenticateUser.new(@user.email, @user.password).call
+    response = { message: Message.account_created, auth_token: auth_token }
+    json_response(response, :created)
   end
 
   def show
