@@ -10,4 +10,9 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { maximum: 255 },
                       format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
   validates_presence_of :password_digest
+
+  def is_admin
+    self.is_privileged
+  end
+
 end

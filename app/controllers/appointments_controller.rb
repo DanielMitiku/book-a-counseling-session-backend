@@ -1,9 +1,10 @@
 class AppointmentsController < ApplicationController
   before_action :set_user
   before_action :set_user_appointment, only: [:show, :update, :destroy]
+  before_action :correct_user
 
   def index
-    json_response(current_user.appointments.paginate(page: params[:page], per_page: 20))
+    json_response(@user.appointments.paginate(page: params[:page], per_page: 20))
   end
 
   def show
@@ -11,7 +12,7 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-    current_user.appointments.create!(appointment_params)
+    @user.appointments.create!(appointment_params)
     json_response(@appointment, :created)
   end
 
@@ -38,4 +39,11 @@ class AppointmentsController < ApplicationController
   def set_user_appointment
     @appointment = @user.appointments.find_by!(id: params[:id]) if @user
   end
+
+  def correct_user
+    if(current_user != @user && !current_user.is_admin)
+      json_response({ message: "not authorized" }, :unauthorized)
+    end
+  end
+
 end

@@ -1,6 +1,6 @@
 class CounselingsController < ApplicationController
   before_action :set_counseling, only: [:show, :update, :destroy] 
-  # before_action :admin_user
+  before_action :admin_user
 
   def index
     @counselings = Counseling.all
@@ -35,4 +35,11 @@ class CounselingsController < ApplicationController
   def set_counseling
     @counseling = Counseling.find(params[:id])
   end
+
+  def admin_user
+    if (!current_user.is_admin)
+      json_response({ message: "not authorized" }, :unauthorized)
+    end
+  end
+
 end
