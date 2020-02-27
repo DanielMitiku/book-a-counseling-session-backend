@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.update(todo_params)
+    @user.update(user_params)
     head :no_content
   end
 
