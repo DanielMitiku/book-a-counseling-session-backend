@@ -29,6 +29,7 @@ gem 'rubocop'
 gem 'bcrypt'
 gem 'jwt'
 gem 'active_model_serializers'
+gem 'will_paginate'
 
 group :development, :test do
   gem 'rspec-rails'

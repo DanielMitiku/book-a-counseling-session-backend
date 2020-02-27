@@ -4,7 +4,7 @@ class CounselingsController < ApplicationController
 
   def index
     @counselings = Counseling.all
-    json_response(@counselings)
+    json_response(@counselings.paginate(page: params[:page], per_page: 20))
   end
 
   def create

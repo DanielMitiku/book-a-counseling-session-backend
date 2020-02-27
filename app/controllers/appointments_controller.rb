@@ -3,7 +3,7 @@ class AppointmentsController < ApplicationController
   before_action :set_user_appointment, only: [:show, :update, :destroy]
 
   def index
-    json_response(current_user.appointments)
+    json_response(current_user.appointments.paginate(page: params[:page], per_page: 20))
   end
 
   def show

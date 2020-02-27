@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    json_response(@users)
+    json_response(@users.paginate(page: params[:page], per_page: 20))
   end
 
   def create
