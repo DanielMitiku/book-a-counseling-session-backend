@@ -30,6 +30,7 @@ gem 'bcrypt'
 gem 'jwt'
 gem 'active_model_serializers'
 gem 'will_paginate'
+gem 'rack-cors'
 
 group :development, :test do
   gem 'rspec-rails'
