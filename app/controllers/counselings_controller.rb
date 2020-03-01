@@ -1,6 +1,6 @@
 class CounselingsController < ApplicationController
   before_action :set_counseling, only: [:show, :update, :destroy] 
-  before_action :admin_user
+  before_action :admin_user, except: [:index]
 
   def index
     @counselings = Counseling.all
