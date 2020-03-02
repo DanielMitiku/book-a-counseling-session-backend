@@ -13,7 +13,8 @@ class AppointmentsController < ApplicationController
 
   def create
     @user.appointments.create!(appointment_params)
-    json_response(@appointment, :created)
+    appointment = @user.appointments.first
+    json_response({appointment: appointment}, :created)
   end
 
   def update
