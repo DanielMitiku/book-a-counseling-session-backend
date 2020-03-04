@@ -5,7 +5,7 @@ class UserSerializer < ActiveModel::Serializer
   def user_appointments
     self.object.appointments.map do |a|
       {appointment_id: a.id,
-       appointment_date: a.date,
+       appointment_date: a.date.strftime("%a %l:%M %p %d %b %Y"),
        counseling_id: a.counseling.id,
        counseling_name: a.counseling.name,
        counseling_desc: a.counseling.description}
