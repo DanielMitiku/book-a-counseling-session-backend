@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :appointments
+  has_many :appointments, dependent: :destroy
   has_many :counselings, :through => :appointments
 
   has_secure_password
