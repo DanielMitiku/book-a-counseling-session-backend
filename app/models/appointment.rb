@@ -9,11 +9,8 @@ class Appointment < ApplicationRecord
   validate :date_cannot_be_past
 
   private
-	
-  def date_cannot_be_past
-    if date.present? && date < Date.today
-      errors.add(:date, "can not be in the past.")
-    end		
-  end
 
+  def date_cannot_be_past
+    errors.add(:date, 'can not be in the past.') if date.present? && date < Date.today
+  end
 end

@@ -1,6 +1,6 @@
 class AppointmentsController < ApplicationController
   before_action :set_user
-  before_action :set_user_appointment, only: [:show, :update, :destroy]
+  before_action :set_user_appointment, only: %i[show update destroy]
   before_action :correct_user
 
   def index
@@ -14,7 +14,7 @@ class AppointmentsController < ApplicationController
   def create
     @user.appointments.create!(appointment_params)
     appointment = @user.appointments.first
-    json_response({appointment: appointment}, :created)
+    json_response({ appointment: appointment }, :created)
   end
 
   def update
@@ -42,9 +42,6 @@ class AppointmentsController < ApplicationController
   end
 
   def correct_user
-    if(current_user != @user && !current_user.is_admin)
-      json_response({ message: "not authorized" }, :unauthorized)
-    end
+    json_response({ message: 'not authorized' }, :unauthorized) if current_user != @user && !current_user.is_admin
   end
-
 end

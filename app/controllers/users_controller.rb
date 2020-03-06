@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :update, :destroy]
+  before_action :set_user, only: %i[show update destroy]
   skip_before_action :authorize_request, only: :create
-  before_action :correct_user, only: [:show, :update]
-  before_action :admin_user, only: [:index, :destroy]
-  
+  before_action :correct_user, only: %i[show update]
+  before_action :admin_user, only: %i[index destroy]
+
   def index
     @users = User.all
     json_response(@users.paginate(page: params[:page], per_page: 20))
@@ -41,15 +41,10 @@ class UsersController < ApplicationController
   end
 
   def correct_user
-    if(current_user != @user && !current_user.is_admin)
-      json_response({ message: "not authorized" }, :unauthorized)
-    end
+    json_response({ message: 'not authorized' }, :unauthorized) if current_user != @user && !current_user.is_admin
   end
 
   def admin_user
-    if (!current_user.is_admin)
-      json_response({ message: "not authorized" }, :unauthorized)
-    end
+    json_response({ message: 'not authorized' }, :unauthorized) unless current_user.is_admin
   end
-
 end
