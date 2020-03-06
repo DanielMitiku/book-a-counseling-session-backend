@@ -4,5 +4,6 @@ class Counseling < ApplicationRecord
   has_many :users, through: :appointments
 
   validates :name, presence: true, length: { maximum: 40 }
-  validates :description, presence: true, length: { maximum: 25 }
+  validates :description, presence: true, length: { maximum: 255 }
+  validates :image_url, presence: true
 end

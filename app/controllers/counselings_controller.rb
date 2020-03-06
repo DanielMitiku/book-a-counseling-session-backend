@@ -1,6 +1,6 @@
 class CounselingsController < ApplicationController
   before_action :set_counseling, only: %i[show update destroy]
-  before_action :admin_user, except: [:index]
+  before_action :admin_user, except: [:index, :show]
 
   def index
     @counselings = Counseling.all
@@ -29,7 +29,7 @@ class CounselingsController < ApplicationController
   private
 
   def counseling_params
-    params.permit(:name, :description)
+    params.permit(:name, :description, :image_url)
   end
 
   def set_counseling
