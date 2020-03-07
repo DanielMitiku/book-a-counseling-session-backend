@@ -41,10 +41,10 @@ class UsersController < ApplicationController
   end
 
   def correct_user
-    json_response({ message: 'not authorized' }, :unauthorized) if current_user != @user && !current_user.is_admin
+    json_response({ message: 'not authorized' }, :unauthorized) if current_user != @user && !current_user.admin?
   end
 
   def admin_user
-    json_response({ message: 'not authorized' }, :unauthorized) unless current_user.is_admin
+    json_response({ message: 'not authorized' }, :unauthorized) unless current_user.admin?
   end
 end

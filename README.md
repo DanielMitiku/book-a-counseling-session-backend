@@ -5,8 +5,7 @@
 - Ruby on Rails
 - Rails JSON API 
 - JWT 
-
-### 🔥  [Demo]()
+- Postgresql 
 
 ## RESTful endpoints
 
@@ -44,6 +43,27 @@
     rails db:migrate
     rails s
 ```
+
+*Open development server in your browser*
+
+Open http://localhost:4000 in your browser.
+
+
+## Examples
+
+- You can use any tool to make requests to the server. In this example, I used httpie.
+- To login and receive JWToken as a response, pass your email and password as shown below:
+
+```bash
+    http :4000/auth/login email=your_email password=your_password
+```
+
+- To get the appointments of a user:
+
+```bash
+    http :4000/users/:user_id/appointments Authorization:'Auth_token'
+```
+
 
 ## Author
 

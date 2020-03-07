@@ -11,7 +11,7 @@ class User < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
   validates_presence_of :password_digest
 
-  def is_admin
+  def admin?
     is_privileged
   end
 end

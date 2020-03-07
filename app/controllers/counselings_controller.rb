@@ -1,6 +1,6 @@
 class CounselingsController < ApplicationController
   before_action :set_counseling, only: %i[show update destroy]
-  before_action :admin_user, except: [:index, :show]
+  before_action :admin_user, except: %i[index show]
 
   def index
     @counselings = Counseling.all
@@ -37,6 +37,6 @@ class CounselingsController < ApplicationController
   end
 
   def admin_user
-    json_response({ message: 'not authorized' }, :unauthorized) unless current_user.is_admin
+    json_response({ message: 'not authorized' }, :unauthorized) unless current_user.admin?
   end
 end
