@@ -12,6 +12,8 @@ default: &default
 development:
   <<: *default
   database: daniel
+  username: daniel
+  password: 
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -19,7 +21,12 @@ development:
 test:
   <<: *default
   database: daniel
+  username: daniel
+  password:  
+
 
 production:
   <<: *default
-  database: daniel
+  database: book-a-session-backend_production
+  username: book-a-session-backend
+  password: <%= ENV['BOOK-A-SESSION-BACKEND_DATABASE_PASSWORD'] %>
