@@ -36,6 +36,8 @@
     cd book-a-counseling-session-backend
 ```
 
+- Please install Postgres db in your computer and add the appropriate config to the *config/database.yml* file
+
 *Install `gems` packages, migrate database and start development server*
 
 ```bash
