@@ -6,5 +6,7 @@ Rails.application.routes.draw do
     resources :appointments
   end
 
+  get '/all_appointments', to: 'appointments#all'
+
   resources :counselings
 end
