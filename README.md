@@ -42,14 +42,10 @@
 
 ```bash
     bundle install
+    rails db:create
     rails db:migrate
     rails s
 ```
-
-*Open development server in your browser*
-
-Open http://localhost:4000 in your browser.
-
 
 ## Examples
 
