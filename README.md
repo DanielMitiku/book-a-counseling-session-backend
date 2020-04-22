@@ -7,6 +7,14 @@
 - JWT 
 - Postgresql 
 
+## Demo
+
+🔥 [Demo](https://book-a-session-rails-react.herokuapp.com/)
+
+## Screenshot
+
+<img src="./screenshot.png">
+
 ## RESTful endpoints
 
   |                   Endpoint                   |           Functionality         | 
@@ -62,17 +70,26 @@
     http :4000/users/:user_id/appointments Authorization:'Auth_token'
 ```
 
+## Current Features
+
+- RESTful API as shown in the above table
+- User authentication using JWT
+- User authorization
+- Users can book/remove appointments
+- Admins can remove users' appointments
+- Admins can add/remove sessions users will book
+- Admins can remove users ...
+
+## Features you can add
+
+- API versioning
+- making each user have its own timezone ...
 
 ## Author
 
 - Github: [Daniel Mitiku](https://github.com/DanielMitiku)
 - LinkedIn: [@daniel-wesego](https://www.linkedin.com/in/daniel-wesego/)
 - Email: wedanielmitiku@gmail.com
-
-## Features you can add
-
-- API versioning
-- making each user have its own timezone ...
 
 ## 🤝 Contributing
 
